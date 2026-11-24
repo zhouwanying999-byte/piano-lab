@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piano Lab · 月光奏鸣曲</title>
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' 'unsafe-inline'; img-src 'self'; worker-src 'self'; manifest-src 'self'; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'">
+<meta name="theme-color" content="#245d57">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="stylesheet" href="./styles.css">
+
+</head>
+<body>
+<main>
+<header>
+<p class="meta">Piano Lab · 贝多芬 · Op. 27 No. 2 · 第一乐章</p>
+<h1>月光奏鸣曲</h1>
+<p>第 1–2 小节 · Adagio sostenuto · 钢琴练习</p>
+<p class="help" id="offline-status" aria-live="polite">正在检查离线支持。</p>
+</header>
+<section aria-labelledby="score-title">
+<h2 id="score-title">谱面与播放</h2>
+<div class="score-scroll" tabindex="0" aria-label="原谱，可横向滚动">
+<div class="score" id="score">
+<canvas id="notation" width="1866" height="780" role="img" aria-label="贝多芬月光奏鸣曲第一乐章前两小节双手乐谱"></canvas>
+<div class="measure" id="measure-1" style="left:20.8%;width:40.15%"></div>
+<div class="measure" id="measure-2" style="left:60.95%;width:38.8%"></div>
+<div class="cursor" id="cursor" hidden></div>
+</div>
+</div>
+<p class="help">依据第 1–2 小节重新制谱。选小节后可从该处播放或循环。</p>
+<div class="measures" id="measure-buttons"></div>
+<div class="controls">
+<button type="button" id="play" class="play">播放</button><button type="button" id="stop">停止</button>
+<label>声部 <select id="hand"><option value="both">双手合奏</option><option value="left">左手</option><option value="right">右手</option></select></label>
+<label>练习速度 <select id="speed"><option value="1">♩ = 48</option><option value=".75">♩ = 36</option><option value=".5">♩ = 24</option><option value=".375">♩ = 18</option></select></label>
+<label><input id="loop" type="checkbox"> 循环所选小节</label>
+</div>
+<div class="hints">
+<label><input id="names" type="checkbox" checked> 显示音名</label>
+<label><input id="fingers" type="checkbox" checked> 显示推荐指法</label>
+<label><input id="harmony" type="checkbox" checked> 显示和弦提示</label>
+</div>
+<p id="status" class="help" aria-live="polite">准备就绪。点「播放」开启声音。</p>
+</section>
+<section aria-labelledby="keyboard-title">
+<h2 id="keyboard-title">键盘</h2>
+<div class="keyboard-scroll" tabindex="0" aria-label="钢琴键盘，可横向滚动">
+<div class="keyboard" id="keyboard"></div>
+</div>
+<div class="legend"><span><i class="left-swatch"></i>左手</span><span><i class="right-swatch"></i>右手</span><span>数字为推荐指法，1 是拇指，5 是小指。</span></div>
+<div class="notes-line" id="current-notes"></div>
+</section>
+<section class="chord-panel" id="chord-panel" aria-labelledby="chord-title">
+<h2 id="chord-title">和弦与低音</h2>
+<div class="measures" id="chord-buttons"></div>
+<div id="chord-detail"></div>
+</section>
+<details id="theory">
+<summary>调号、音阶与节奏</summary>
+<p><strong>调号和主调。</strong>调号依次升 F、C、G、D，在各个八度都有效。E 大调也使用这组调号。这里听到的是以 C♯ 为主音的升 C 小调，开头的 C♯–E–G♯ 是它的主三和弦。</p>
+<p><strong>升 C 自然小调。</strong>C♯–D♯–E–F♯–G♯–A–B–C♯。这两小节没有临时升降号。和声小调会把 B 升为 B♯，本片段还没用到这个变化。指法中的数字只指手指。</p>
+<p><strong>拍子。</strong>带竖线的 C 是 2/2。每小节两大拍，每大拍有两组三连音。每组三音均分一个四分音符的时间。左手八度从小节开头持续到小节末。</p>
+<p><strong>音名和八度。</strong>中央 C 是 C4。右手 G♯3 在中央 C 下方，C♯4 与 E4 在中央 C 上方。左手的两个八度分别是 C♯2＋C♯3 与 B1＋B2。</p>
+</details>
+<section aria-labelledby="quiz-title">
+<div class="quiz-head"><h2 id="quiz-title">自主练习</h2><span id="quiz-progress"></span></div>
+<div id="question"></div>
+<div class="choices" id="choices"></div>
+<p class="feedback" id="feedback" aria-live="polite"></p>
+<button type="button" id="next">下一题</button>
+</section>
+<footer class="help">点按键盘可试听。播放使用合成音色，练习速度与推荐指法为教材设置。此公开版仅含演示教材，未提供资料上传或账号同步。</footer>
+</main>
+<script src="./app.js" defer></script>
+</body>
+</html>
